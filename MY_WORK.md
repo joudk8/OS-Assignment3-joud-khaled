@@ -32,11 +32,11 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | [joud khaled] |
+| **Student ID** | [446052015] |
+| **University Email** | [446052015]@std.psau.edu.sa |
+| **GitHub Username** | [joudk8] |
+| **Repository Link** | [https://github.com/joudk8/OS-Assignment3-joud-khaled] |
  
 ---
 
@@ -132,17 +132,17 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
+### Entry 1 - [November 8 , 2026 , 11:00 PM]
 **What I did**:
-
+I set up my GitHub repository and changed the student ID in the Java file
 **Details**:
-
+I forked the assignment repository from GitHub and opened it in VS Code. Then I changed the student ID in SchedulerSimulationSync.java and saved my changes using Git
 **Challenges**:
-
+At first, I couldn't make a commit because Git asked me to set my username and email
 **Solution**:
-
+I added my name and university email using the terminal in VS Code. After that, I made the commit and pushed it to GitHub successfully
 **Time spent**:
-
+25 minutes
 ---
 
 ### Entry 2 - [Date and Time]
