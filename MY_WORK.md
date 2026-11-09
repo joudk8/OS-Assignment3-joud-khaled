@@ -145,17 +145,17 @@ I added my name and university email using the terminal in VS Code. After that, 
 25 minutes
 ---
 
-### Entry 2 - [Date and Time]
+### Entry 2 - [November 9 , 2026 , 10;30 pm]
 **What I did**:
-
+Implemented Feature 1 (Ready Queue Locking)
 **Details**:
-
+Used ReentrantLock to protect the shared ready queue in add(), poll(), processOf(), and snapshot()
 **Challenges**:
-
+Had an issue with missing braces while editing the code
 **Solution**:
-
+Fixed the braces, compiled the code successfully, and ran the simulation to test my changes
 **Time spent**:
-
+50 minutes
 ---
 
 ### Entry 3 - [Date and Time]
