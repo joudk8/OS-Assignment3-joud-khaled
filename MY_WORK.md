@@ -85,7 +85,7 @@
 | 4 | Feature 3: Semaphore | `Feature 3: Replaced busy waiting with a counting semaphore` |
 | 5 | Development log entries | `Docs: Added development log entries 1-3` |
 | 6 | Reflection and answers | `Docs: Completed reflection and technical answers` |
-| 7 | Video link | `Docs: Added demo video link` |
+d| 7 | Video link | `  https://drive.google.com/file/d/1YZ8ahj3osR3OlyRV83_3FsNXQIaNmozR/view?usp=drive_link   ` |
 
 **Rules:**
 - ✅ **One commit per feature.** Do not put all three features in one commit.
@@ -179,30 +179,30 @@ Checked the code and ran the simulation again. All three statistics checks passe
 40 minuts
 ---
 
-### Entry 4 - [Date and Time]
+### Entry 4 - [november 17, 2026]
 **What I did**:
-
+Implemented Feature 3 using a counting semaphore to replace busy waiting and allow CPU workers to terminate correctly.
 **Details**:
-
+I added a Semaphore to ReadyQueue, used acquire() to make CPUs wait for available processes, and release() to signal new processes. I also added wakeWaitingCPUs() to wake blocked CPUs when all processes finish.
 **Challenges**:
-
+The CPU workers were getting stuck after all processes finished, causing a WATCHDOG timeout.
 **Solution**:
-
+I added wakeWaitingCPUs() to release semaphore permits when all processes finish. I also handled null threads so the CPUs can exit safely. After testing, the WATCHDOG error disappeared.
 **Time spent**:
-
+1 hour
 ---
 
-### Entry 5 - [Date and Time]
+### Entry 5 - [18 novemer]
 **What I did**:
-
+I completed the final integration and prepared the video demonstration.
 **Details**:
-
+I reviewed the semaphore implementation, ran the simulation, checked the verification output, and recorded a video showing my code and execution.
 **Challenges**:
-
+Making sure the final implementation worked correctly and preparing a clear demonstration within the available time.
 **Solution**:
-
+I reviewed the execution output, checked the synchronization behavior, and recorded the final demonstration.
 **Time spent**:
-
+2hour 
 ---
 
 ### Entry 6 - [Optional - Date and Time]
@@ -222,14 +222,14 @@ Checked the code and ran the simulation again. All three statistics checks passe
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [5 hour]
 
 **Most challenging part**:
-
+The most challenging part was handling synchronization between multiple CPU threads. I had difficulty understanding when CPUs should wait and when they should continue execution. Fixing the watchdog timeout was also challenging because some CPUs remained blocked after all processes finished. I solved this by using semaphores to control access and wake waiting CPUs. Testing different situations helped me understand the problem better.
 **Most interesting learning**:
-
+The most interesting thing I learned was how locks and semaphores help manage multiple threads safely. I learned how race conditions can happen when threads access shared data at the same time. I also understood how synchronization prevents conflicts and keeps the program running correctly. It was interesting to see how these concepts work in a real Java program. This assignment improved my understanding of multithreading.
 **What I would do differently next time**:
-
+Next time, I would start testing each feature earlier instead of waiting until several changes are completed. I would also divide the work into smaller steps and check the output after each change. I would pay more attention to edge cases, especially when all processes finish. I would organize my commits more regularly to make it easier to track changes. This would help me find errors faster and save time.
 ---
 
 # Part B: Reflection (0.5 mark)
@@ -248,7 +248,7 @@ Checked the code and ran the simulation again. All three statistics checks passe
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[I learned that synchronization is important when multiple threads use the same data. Without it, the program might give wrong results. I used ReentrantLock to protect the ready queue and shared statistics. I also learned how to use try/finally to release the lock. For Feature 3, I used a Semaphore instead of busy waiting. This assignment helped me understand synchronization better and how it works in Java.]
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -256,7 +256,7 @@ Checked the code and ran the simulation again. All three statistics checks passe
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[The most challenging part for me was Feature 3. At first, the program did not finish correctly. I got a WATCHDOG error because some CPU threads were still waiting. I had to check the semaphore code to find the problem. It took me some time to understand how to wake up the waiting CPUs. After fixing the problem, the program worked correctly.]
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -264,7 +264,7 @@ Checked the code and ran the simulation again. All three statistics checks passe
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[I started by checking the code to find where the problem was. I noticed that some CPU threads were still waiting after all processes finished. I added a method to wake up the waiting CPUs. I also added a condition to handle null threads. Then I compiled and ran the program again. After these changes, the WATCHDOG error disappeared and the verification results were correct.]
 
 ## Question 4: Where can synchronization concepts be applied in real-world applications?
 
@@ -272,7 +272,7 @@ Checked the code and ran the simulation again. All three statistics checks passe
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[Synchronization can be used in many programs that have multiple threads. For example, it can be used in banking systems when two users access the same account. It helps prevent errors when updating shared data. It is also useful in operating systems when different processes share resources. Locks and semaphores can help control access to these resources. I think synchronization is important because it makes programs work more correctly and safely.]
 
 ### Optional: What would you like to learn more about?
 
@@ -306,10 +306,10 @@ Checked the code and ran the simulation again. All three statistics checks passe
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[A race condition happens when multiple threads access shared data at the same time. In my first run, the program had an IllegalThreadStateException because the ready queue was not protected correctly. I used ReentrantLock in the ReadyQueue methods to prevent threads from changing the queue at the same time. I also protected the shared statistics to avoid incorrect counter values. After fixing the synchronization problems, the verification showed consistent shared values.]
 
 Verification block of the **original starter**:
-```
+```The original starter program showed an `IllegalThreadStateException` during execution. The simulation did not complete correctly because multiple CPU threads accessed the shared ready queue without synchronization.
 [Paste the verification block (or the exception/watchdog message) of the starter here]
 ```
 
@@ -329,12 +329,12 @@ Verification block of **my final version**:
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[A critical section is a part of the code that accesses shared data. In my project, I used ReentrantLock to protect the ReadyQueue methods like add() and poll(). I also used a separate lock for SharedStats because it handles different shared data. This allows the ready queue and statistics to be accessed independently. I used try/finally to make sure the locks are released correctly.]
 
 | Critical section (variable / method) | Lock used | Why it needs protection |
 |---|---|---|
-| [e.g., `ReadyQueue.poll()`] | [lock name] | [reason] |
-| [...] | [...] | [...] |
+| [()readyoueue.add] | [lock ] | [To prevent multiple threads from modifying the ready queue at the same time] |
+| SharedStats.addServiceTime() | statsLock | To prevent multiple threads from updating shared statistics at the same time. |
 
 ## Question 3: Busy Waiting vs Semaphore
 
@@ -344,7 +344,7 @@ Verification block of **my final version**:
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[Busy waiting means a CPU keeps checking if there is a process available. This wastes CPU time because the thread keeps running while waiting. In my project, I used a Semaphore to solve this problem. The acquire() method makes the CPU wait until a process is available, and release() signals that there is work to do. After my changes, the program showed zero busy-waiting polls.]
 
 ## Question 4: Classical Problems and Deadlock
 
@@ -355,13 +355,13 @@ Verification block of **my final version**:
 **Your Answer:** *(3-5 sentences)*
 
 **Classical problem and roles**:
-[Name the problem; who is the producer, who is the consumer?]
+[This is the Producer-Consumer problem. The producer adds processes to the ready queue, and the CPU workers are the consumers because they take processes from the queue.]
 
 **Semaphores for a bounded queue (name and initial value)**:
-[Name the three semaphores and their initial values.]
+[empty = N (queue capacity), full = 0, mutex = 1.]
 
 **Deadlock scenario and prevention**:
-[Describe the scenario and the necessary condition you would break.]
+[Deadlock can happen if the producer holds the mutex while waiting for an empty slot, and the consumer cannot get the mutex to remove an item. To prevent this, the producer should wait for an empty slot before acquiring the mutex. This prevents circular waiting and allows the consumer to continue.s]
 
 ## Summary
 
