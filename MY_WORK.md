@@ -158,17 +158,25 @@ Fixed the braces, compiled the code successfully, and ran the simulation to test
 50 minutes
 ---
 
-### Entry 3 - [Date and Time]
+### Entry 3 - [ november 17 , 2026]
 **What I did**:
+
+Implemented Feature 2 (Shared Statistics Locking).
 
 **Details**:
 
+Used ReentrantLock to protect the three shared statistics and their read methods.
+
 **Challenges**:
+
+The total service time check did not pass on the first run.
 
 **Solution**:
 
-**Time spent**:
+Checked the code and ran the simulation again. All three statistics checks passed
 
+**Time spent**:
+40 minuts
 ---
 
 ### Entry 4 - [Date and Time]
